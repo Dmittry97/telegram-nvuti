@@ -5,8 +5,8 @@ COPY package.json tsconfig.json ./
 COPY packages ./packages
 COPY apps/bot ./apps/bot
 
-# Обновляем npm, т.к. штатная версия в node:20-alpine не понимает workspace:*
-RUN npm install -g npm@11.7.0
+# Активируем corepack и готовим npm 11.7.0, чтобы workspace:* поддерживался корректно
+RUN corepack enable && corepack prepare npm@11.7.0 --activate
 
 # Устанавливаем зависимости в режиме workspaces, чтобы корректно
 # резолвились ссылки вида "workspace:*"
