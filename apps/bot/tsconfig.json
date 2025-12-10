@@ -4,7 +4,10 @@
     "module": "ESNext",
     "outDir": "dist",
     "rootDir": "src",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "paths": {
+      "@shared/core": ["../../packages/shared/src"]
+    }
   },
   "include": ["src/**/*"]
 }

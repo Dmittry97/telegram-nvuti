@@ -7,7 +7,10 @@
     "target": "ES2019",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@shared/core": ["../../packages/shared/src"]
+    }
   },
   "include": ["src/**/*"]
 }

@@ -9,7 +9,7 @@
   "dependencies": {
     "telegraf": "^4.16.3",
     "dotenv": "^16.4.5",
-    "@shared/core": "workspace:*"
+    "@shared/core": "file:../../packages/shared"
   },
   "devDependencies": {
     "typescript": "^5.4.0",
