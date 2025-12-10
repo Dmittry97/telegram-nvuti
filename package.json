@@ -1,0 +1,16 @@
+{
+  "name": "telegram-nvuti-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "npm@10.8.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace web run dev",
+    "dev:api": "npm --workspace api run start:dev",
+    "dev:bot": "npm --workspace bot run dev",
+    "dev": "npm run dev:web"
+  }
+}

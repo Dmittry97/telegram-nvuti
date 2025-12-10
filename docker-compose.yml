@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: nvuti
+      POSTGRES_USER: nvuti
+      POSTGRES_PASSWORD: nvuti
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    command: npm run start:dev
+    environment:
+      DATABASE_URL: postgres://nvuti:nvuti@db:5432/nvuti
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+
+  bot:
+    build:
+      context: .
+      dockerfile: apps/bot/Dockerfile
+    command: npm run dev
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}
+      WEBAPP_URL: ${WEBAPP_URL}
+    depends_on:
+      - api
+
+volumes:
+  db-data: {}
