@@ -5,11 +5,7 @@ COPY package.json tsconfig.json ./
 COPY packages ./packages
 COPY apps/bot ./apps/bot
 
-# Активируем corepack и готовим npm 11.7.0, чтобы workspace:* поддерживался корректно
-RUN corepack enable && corepack prepare npm@11.7.0 --activate
-
-# Устанавливаем зависимости в режиме workspaces, чтобы корректно
-# резолвились ссылки вида "workspace:*"
-RUN npm install --workspaces --include-workspace-root
+# Используем конкретную версию npm через npx, чтобы гарантировать поддержку workspace:*
+RUN npx -y npm@11.7.0 install --workspaces --include-workspace-root
 
 CMD ["npm", "--workspace", "bot", "run", "dev"]
