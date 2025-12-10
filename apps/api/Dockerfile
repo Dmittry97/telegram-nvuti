@@ -5,7 +5,7 @@ COPY package.json tsconfig.json ./
 COPY packages ./packages
 COPY apps/api ./apps/api
 
-# Используем фиксированную версию npm через npx
-RUN npx -y npm@11.7.0 install --workspaces --include-workspace-root
+# Используем фиксированную версию npm через npx, ставим только workspace api
+RUN npx -y npm@11.7.0 install --workspace api --include-workspace-root
 
 CMD ["npm", "--workspace", "api", "run", "start:dev"]

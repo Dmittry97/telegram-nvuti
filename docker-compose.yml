@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
-    command: npm run start:dev
+    command: npm --workspace api run start:dev
     environment:
       DATABASE_URL: postgres://nvuti:nvuti@db:5432/nvuti
       PORT: 3001
@@ -30,7 +30,7 @@ services:
     build:
       context: .
       dockerfile: apps/bot/Dockerfile
-    command: npm run dev
+    command: npm --workspace bot run dev
     environment:
       BOT_TOKEN: ${BOT_TOKEN}
       WEBAPP_URL: ${WEBAPP_URL}
